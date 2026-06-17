@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Counter App</title>
+  <style>
+    :root {
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #1f2937;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 32px;
+    }
+
+    .container {
+      background: #ffffff;
+      border-radius: 18px;
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
+      max-width: 420px;
+      width: 100%;
+      padding: 36px;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: 2rem;
+    }
+
+    p {
+      margin: 0 0 28px;
+      line-height: 1.6;
+      color: #475569;
+    }
+
+    .counter {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: #eef2ff;
+      color: #3730a3;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 28px;
+      user-select: none;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    button {
+      border: none;
+      border-radius: 12px;
+      padding: 16px 0;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 16px rgba(15, 23, 42, 0.12);
+    }
+
+    .increment {
+      background: #4338ca;
+      color: #ffffff;
+    }
+
+    .decrement {
+      background: #ef4444;
+      color: #ffffff;
+    }
+
+    .reset {
+      background: #f8fafc;
+      color: #334155;
+      border: 1px solid #cbd5e1;
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <h1>Counter App</h1>
+    <p>Use the buttons to change the number. This example shows how JavaScript can update the page dynamically.</p>
+
+    <div class="counter" id="counterValue">0</div>
+
+    <div class="buttons">
+      <button class="decrement" id="decrementButton">-</button>
+      <button class="reset" id="resetButton">Reset</button>
+      <button class="increment" id="incrementButton">+</button>
+    </div>
+  </main>
+
+  <script>
+    const counterValue = document.getElementById('counterValue');
+    const incrementButton = document.getElementById('incrementButton');
+    const decrementButton = document.getElementById('decrementButton');
+    const resetButton = document.getElementById('resetButton');
+
+    let count = 0;
+
+    function updateDisplay() {
+      counterValue.textContent = count;
+    }
+
+    function increment() {
+      count += 1;
+      updateDisplay();
+    }
+
+    function decrement() {
+      count -= 1;
+      updateDisplay();
+    }
+
+    function resetCounter() {
+      count = 0;
+      updateDisplay();
+    }
+
+    incrementButton.addEventListener('click', increment);
+    decrementButton.addEventListener('click', decrement);
+    resetButton.addEventListener('click', resetCounter);
+
+    updateDisplay();
+  </script>
+</body>
+</html>
